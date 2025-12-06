@@ -206,7 +206,7 @@ int main() {
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
     bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
-    // how do i make it print.??
+    // how do i make it print.???
 
     // ------------------------------------------------------
     // STUDENT WORK:
