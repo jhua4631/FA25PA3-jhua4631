@@ -6,6 +6,8 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <map>
+#include <set>
 
 using namespace std;
 
@@ -117,9 +119,17 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-// bool dfs(……) {
-//     // Your code here
-// }
+ bool dfs(map<int, vector<int>>& graph, int start, set<int>& visited) {
+    visited.insert(start);
+    cout << start << " ";
+
+    for (int neighbor : graph[start]) {
+        if (visited.find(neighbor) == visited.end()) {
+            dfs(graph, neighbor, visited);
+        }
+    }
+
+    }
 
 
 // ----------------------------------------------------------
