@@ -120,7 +120,7 @@ void printPath(pair<int,int> exitcell,
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
 // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c)
- bool dfs(int r, int c, vector<vector<int>>& maze, vector<vector<bool>>& visited, vector<vector<int>> parent_r, vector<vector<int>> parent_c,int exit_r, int exit_c) {
+ bool dfs(int r, int c, vector<vector<int>>& maze, vector<vector<bool>>& visited, vector<vector<int>>& parent_r, vector<vector<int>>& parent_c,int exit_r, int exit_c) {
 
     // first values
     visited[r][c] = true;
@@ -143,20 +143,25 @@ void printPath(pair<int,int> exitcell,
 
         if(maze[nr][nc] == 0 && !visited[nr][nc]) {
             // visited[nr][nc] = true;
-            parent_r[nr][nc] = nr;
-            parent_c[nr][nc] = nc;
+            parent_r[nr][nc] = r;
+            parent_c[nr][nc] = c;
+            // putting nr and nc made it infinitely loop oops.
 
-            dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c);
+            if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
+                return true; //
+            }
 
         }
     }
 
+    return false;
 
     // checklist
     // - mark first point as visited (:D)
     // - visit a non-visited point (:D)
-    // - visit the neighbors (?)
+    // - visit the neighbors (:D)
     // ok recursion should go back and visit the neighbors but i cant tell if it does it yet (traceback with paper mayhaps)
+    // -
 
     // cout << start << " ";
     // for (int neighbor : maze[start]) {
@@ -206,7 +211,7 @@ int main() {
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
     bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
-    // how do i make it print.???
+    // forgot the & in parent_r and parent_c sob
 
     // ------------------------------------------------------
     // STUDENT WORK:
