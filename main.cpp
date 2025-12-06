@@ -119,15 +119,43 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
- bool dfs(map<int, vector<int>>& graph, int start, set<int>& visited) {
-    visited.insert(start);
-    cout << start << " ";
+// bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c)
+// what are parent_r and parent_c
+ bool dfs(int r, int c, vector<vector<int>>& maze, vector<vector<bool>>& visited, int exit_r, int exit_c) {
 
-    for (int neighbor : graph[start]) {
-        if (visited.find(neighbor) == visited.end()) {
-            dfs(graph, neighbor, visited);
+    // first values
+    visited[r][c] = true;
+
+    // exit_r and exit_c are where the exits exist in the maze (assuming it gives us that)
+    if (r == exit_r && c == exit_c) {
+        return true;
+    }
+
+    for (int i = 0; i < 4; i++) {
+        int nr = r + dr[i];
+        int nc = c + dc[i];
+        // checks if nr and nc are out of bounds (maze)
+        if(nr < 0 && nr >= maze.size() || nc < 0 && nc >= maze.size()) {
+            continue;
+        }
+
+
+        if(maze[nr][nc] == 0) {
+            if ()
         }
     }
+
+    // checklist
+    // - mark first point as visited (:D)
+    // - visit a non-visited point (?)
+    // - visit the neighbors ()
+
+    // cout << start << " ";
+    // for (int neighbor : maze[start]) {
+    //     if (visited.find(neighbor) == visited.end()) {
+    //         dfs(maze, neighbor, visited);
+    //     }
+    // }
 
     }
 
