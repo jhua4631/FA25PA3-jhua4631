@@ -130,13 +130,13 @@ void printPath(pair<int,int> exitcell,
         return true;
     }
 
-
     for (int i = 0; i < 4; i++) {
         int nr = r + dr[i];
         int nc = c + dc[i];
 
         // checks if nr and nc are out of bounds (maze)
-        if(nr < 0 && nr >= maze.size() || nc < 0 && nc >= maze[0].size()) {
+        // ok has to be either or and not just and or otherwise it doesnt continue
+        if(nr < 0 || nr >= maze.size() || nc < 0 || nc >= maze[0].size()) {
             continue;
         }
 
@@ -155,23 +155,15 @@ void printPath(pair<int,int> exitcell,
     }
 
     return false;
-
+}
     // checklist
     // - mark first point as visited (:D)
     // - visit a non-visited point (:D)
     // - visit the neighbors (:D)
     // ok recursion should go back and visit the neighbors but i cant tell if it does it yet (traceback with paper mayhaps)
-    // -
 
-    // cout << start << " ";
-    // for (int neighbor : maze[start]) {
-    //     if (visited.find(neighbor) == visited.end()) {
-    //         dfs(maze, neighbor, visited);
-    //     }
-    // }
-
-    }
-
+    // also is it better to just. commit every change i do, then push the one that works? or is it just commit then push,
+    // cause its a little uncertain on what i should and shouldnt be doing
 
 // ----------------------------------------------------------
 // MAIN PROGRAM (students add DFS calls and logic)
